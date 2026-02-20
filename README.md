@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🏕️ Math Wilderness
+# Math Wilderness
 
-### *Where Structured Content Powers Adaptive Learning*
+### Where Structured Content Powers Adaptive Learning
 
 [![Built with Sanity](https://img.shields.io/badge/Built%20with-Sanity-f03e2f?style=for-the-badge&logo=sanity)](https://www.sanity.io)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
@@ -17,14 +17,14 @@
 
 ---
 
-## 🎯 The Innovation
+## The Innovation
 
-Math Wilderness isn't just another learning app—it's a demonstration of **structured content as intelligence**. Using Sanity's relational content model, we built an adaptive learning system where:
+Math Wilderness isn't just another learning app. It's a demonstration of **structured content as intelligence**. Using Sanity's relational content model, we built an adaptive learning system where:
 
-- **Concepts unlock dynamically** based on prerequisite relationships
-- **Problems adapt difficulty** using ELO ratings and concept weights
-- **Learning paths emerge** from content structure, not hard-coded logic
-- **AI development** accelerated through Sanity's MCP server
+- Concepts unlock dynamically based on prerequisite relationships
+- Problems adapt difficulty using ELO ratings and concept weights
+- Learning paths emerge from content structure, not hard-coded logic
+- AI development accelerated through Sanity's MCP server
 
 ### Why This Matters
 
@@ -36,11 +36,11 @@ Problem → Concept Weights → ELO Match → Adaptive Delivery
 Attempt → Rating Update → Difficulty Adjust → Optimal Challenge
 ```
 
-Change curriculum in Sanity Studio → App updates instantly. No code deployment needed.
+Change curriculum in Sanity Studio and the app updates instantly. No code deployment needed.
 
 ---
 
-## 🏗️ Architecture: Sanity at the Core
+## Architecture: Sanity at the Core
 
 <div align="center">
 
@@ -89,7 +89,7 @@ graph TB
   difficultyBase: number
   mapPosition: {x: number, y: number}
   biome: 'meadow' | 'forest' | 'mountain' | 'canyon' | 'peak'
-  prerequisites: reference<Concept>[]  // 🔑 Enables dynamic unlocking
+  prerequisites: reference<Concept>[]  // Enables dynamic unlocking
   learningObjectives: text[]
   badge: reference<Badge>
 }
@@ -103,7 +103,7 @@ graph TB
   correctAnswer: string
   answerType: 'multipleChoice' | 'numeric' | 'expression'
   difficultyElo: number
-  conceptBreakdown: {              // 🔑 Composite difficulty
+  conceptBreakdown: {              // Composite difficulty
     concept: reference<Concept>
     weight: number (0-1)
   }[]
@@ -121,7 +121,7 @@ graph TB
   concept: reference<Concept>
   isCorrect: boolean
   responseTime: number
-  eloChange: number               // 🔑 Rating adjustment
+  eloChange: number               // Rating adjustment
   timestamp: datetime
 }
 ```
@@ -131,7 +131,7 @@ Supporting content for gamification and engagement.
 
 ---
 
-## 🧠 The Adaptive Engine
+## The Adaptive Engine
 
 ### ELO Rating System
 
@@ -166,7 +166,7 @@ newElo = oldElo + K * (actualScore - expected)
 }
 ```
 
-**Result:** Change prerequisites in Sanity Studio → map updates instantly.
+**Result:** Change prerequisites in Sanity Studio and the map updates instantly.
 
 ### Adaptive Problem Selection
 
@@ -180,37 +180,37 @@ newElo = oldElo + K * (actualScore - expected)
 ] | order(abs(difficultyElo - $camperElo)) [0]
 ```
 
-**Result:** Always delivers problems in the "zone of proximal development."
+**Result:** Always delivers problems in the zone of proximal development.
 
 ---
 
-## 🚀 Features
+## Features
 
 ### For Learners
-- 🎯 **Adaptive Difficulty** - Problems match your skill level using ELO ratings
-- 🗺️ **Progressive Unlocking** - Master concepts to unlock new challenges
-- 🐿️ **Mascot Companions** - Choose Swift Squirrel, Steady Moose, or Wise Owl
-- 🏆 **Achievement System** - Earn badges and track progress
-- 📊 **Real-time Leaderboard** - Compete with other campers
-- 🔥 **Streak Tracking** - Build daily learning habits
+- Adaptive Difficulty: Problems match your skill level using ELO ratings
+- Progressive Unlocking: Master concepts to unlock new challenges
+- Mascot Companions: Choose Swift Squirrel, Steady Moose, or Wise Owl
+- Achievement System: Earn badges and track progress
+- Real-time Leaderboard: Compete with other campers
+- Streak Tracking: Build daily learning habits
 
 ### For Educators
-- 📝 **Content Authoring** - Create problems and concepts in Sanity Studio
-- 🔗 **Relationship Management** - Define prerequisites visually
-- 📈 **Analytics Dashboard** - Track success rates and difficulty calibration
-- 🎨 **No-code Customization** - Update mascot dialogue, badges, quests
-- 🌐 **Instant Publishing** - Changes go live immediately
+- Content Authoring: Create problems and concepts in Sanity Studio
+- Relationship Management: Define prerequisites visually
+- Analytics Dashboard: Track success rates and difficulty calibration
+- No-code Customization: Update mascot dialogue, badges, quests
+- Instant Publishing: Changes go live immediately
 
 ### For Developers
-- 🏗️ **Structured Schema** - Normalized, extensible content model
-- 🔍 **Powerful Queries** - GROQ traverses relationships effortlessly
-- 🤖 **AI-Assisted Development** - Built with Sanity MCP server
-- ⚡ **Real-time Updates** - Sanity webhooks + React Query
-- 🎨 **Beautiful UI** - Custom SVG illustrations, smooth animations
+- Structured Schema: Normalized, extensible content model
+- Powerful Queries: GROQ traverses relationships effortlessly
+- AI-Assisted Development: Built with Sanity MCP server
+- Real-time Updates: Sanity webhooks + React Query
+- Beautiful UI: Custom SVG illustrations, smooth animations
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <div align="center">
 
@@ -229,7 +229,7 @@ newElo = oldElo + K * (actualScore - expected)
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js 18+
@@ -290,7 +290,7 @@ App opens at `http://localhost:5173`
 
 ---
 
-## 📖 Key Concepts
+## Key Concepts
 
 ### Content Relationships Drive Intelligence
 
@@ -335,14 +335,14 @@ effectiveDifficulty =
 
 ---
 
-## 🎨 UI Highlights
+## UI Highlights
 
 ### Camping Theme Throughout
-- 🏕️ **Treehouse Welcome** - Illustrated SVG onboarding
-- 🗺️ **Forest Learning Map** - Interactive concept nodes
-- 🏔️ **Mountain Progress** - Visual difficulty progression
-- 🔥 **Campfire Social** - Leaderboard with starry night
-- 🏆 **Trophy Room** - Badge collection display
+- Treehouse Welcome: Illustrated SVG onboarding
+- Forest Learning Map: Interactive concept nodes
+- Mountain Progress: Visual difficulty progression
+- Campfire Social: Leaderboard with starry night
+- Trophy Room: Badge collection display
 
 ### Custom SVG Illustrations
 - 15+ hand-drawn scenes
@@ -358,7 +358,7 @@ effectiveDifficulty =
 
 ---
 
-## 🔧 Development with Sanity MCP
+## Development with Sanity MCP
 
 We used Sanity's MCP server with Claude Code to accelerate development:
 
@@ -398,7 +398,7 @@ Write a GROQ query to find problems matching:
 
 ---
 
-## 📊 Data Flow
+## Data Flow
 
 ```mermaid
 sequenceDiagram
@@ -423,7 +423,7 @@ sequenceDiagram
 
 ---
 
-## 🎯 Use Cases
+## Use Cases
 
 ### 1. Adaptive Homework Platform
 Schools deploy with custom curriculum. Teachers author content in Sanity Studio, students get personalized problem sets.
@@ -439,7 +439,7 @@ Education researchers study learning patterns. Sanity's query API provides rich 
 
 ---
 
-## 🚢 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 ```bash
@@ -469,16 +469,16 @@ dataset: 'production'
 
 ---
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 ### Enabled by Structured Content
 
-- **AI Problem Generation** - Use concept breakdowns as prompts for GPT-4
-- **Spaced Repetition** - Query attempt history for optimal review timing
-- **Social Learning** - Camper-to-camper references for peer challenges
-- **Curriculum Marketplace** - Share concept trees between educators
-- **Multi-language** - Localize content without code changes
-- **Accessibility** - Store alternative formats (audio, braille) as content
+- AI Problem Generation: Use concept breakdowns as prompts for GPT-4
+- Spaced Repetition: Query attempt history for optimal review timing
+- Social Learning: Camper-to-camper references for peer challenges
+- Curriculum Marketplace: Share concept trees between educators
+- Multi-language: Localize content without code changes
+- Accessibility: Store alternative formats (audio, braille) as content
 
 ### Technical Roadmap
 
@@ -491,7 +491,7 @@ dataset: 'production'
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - [Sanity Setup Guide](./SANITY_SETUP.md) - Detailed backend configuration
 - [Schema Reference](./sanity/schemas/) - All document types
@@ -501,49 +501,49 @@ dataset: 'production'
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Areas of interest:
 
-- **Content Creation** - Add math problems, concepts, badges
-- **UI/UX** - Improve illustrations, animations, accessibility
-- **Features** - Implement roadmap items
-- **Documentation** - Tutorials, guides, translations
-- **Testing** - Unit tests, E2E tests, load testing
+- Content Creation: Add math problems, concepts, badges
+- UI/UX: Improve illustrations, animations, accessibility
+- Features: Implement roadmap items
+- Documentation: Tutorials, guides, translations
+- Testing: Unit tests, E2E tests, load testing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](./LICENSE)
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- **Sanity.io** - For the incredible CMS and MCP server
-- **Vercel** - For seamless deployment
-- **React Team** - For the amazing framework
-- **Education Community** - For feedback and inspiration
+- Sanity.io: For the incredible CMS and MCP server
+- Vercel: For seamless deployment
+- React Team: For the amazing framework
+- Education Community: For feedback and inspiration
 
 ---
 
-## 📞 Contact
+## Contact
 
-- **GitHub:** [@Tasfia-17](https://github.com/Tasfia-17)
-- **Project:** [mathwilderness](https://github.com/Tasfia-17/mathwilderness)
-- **Demo:** [Live App](#)
+- GitHub: [@Tasfia-17](https://github.com/Tasfia-17)
+- Project: [mathwilderness](https://github.com/Tasfia-17/mathwilderness)
+- Demo: [Live App](#)
 
 ---
 
 <div align="center">
 
-**Built with ❤️ using Sanity's structured content**
+**Built with structured content using Sanity**
 
 [![Sanity](https://img.shields.io/badge/Powered%20by-Sanity-f03e2f?style=for-the-badge&logo=sanity)](https://www.sanity.io)
 
-*Demonstrating that structured content + AI = intelligent education*
+Demonstrating that structured content + AI = intelligent education
 
 </div>
