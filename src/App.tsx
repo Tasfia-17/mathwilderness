@@ -25,7 +25,10 @@ export default function App() {
   const [selectedConcept, setSelectedConcept] = useState<string>('');
   const [userRating, setUserRating] = useState<number>(1000);
 
+  console.log('App rendered, currentScreen:', currentScreen);
+
   const handleNavigate = (screen: ScreenName) => {
+    console.log('Navigating from', currentScreen, 'to', screen);
     setNavigationHistory([...navigationHistory, currentScreen]);
     setCurrentScreen(screen);
   };
@@ -33,17 +36,20 @@ export default function App() {
   const handleBack = () => {
     if (navigationHistory.length > 0) {
       const previousScreen = navigationHistory[navigationHistory.length - 1];
+      console.log('Going back to', previousScreen);
       setNavigationHistory(navigationHistory.slice(0, -1));
       setCurrentScreen(previousScreen);
     }
   };
 
   const handleMascotSelect = (mascot: MascotType, name: string) => {
+    console.log('Mascot selected:', mascot, 'Name:', name);
     setSelectedMascot(mascot);
     setCamperName(name);
   };
 
   const handleConceptSelect = (concept: string) => {
+    console.log('Concept selected:', concept);
     setSelectedConcept(concept);
   };
 
