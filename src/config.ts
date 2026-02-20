@@ -1,6 +1,6 @@
 import { createActor, type backendInterface, type CreateActorOptions, ExternalBlob } from './backend';
 import { StorageClient } from './utils/StorageClient';
-import { HttpAgent } from '@icp-sdk/core/agent';
+import { HttpAgent } from '@dfinity/agent';
 
 const DEFAULT_STORAGE_GATEWAY_URL = 'https://blob.caffeine.ai';
 const DEFAULT_BUCKET_NAME = 'default-bucket';

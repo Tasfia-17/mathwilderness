@@ -1,5 +1,5 @@
-import { HttpAgent, isV3ResponseBody } from '@icp-sdk/core/agent';
-import { IDL } from '@icp-sdk/core/candid';
+import { HttpAgent, isV3ResponseBody } from '@dfinity/agent';
+import { IDL } from '@dfinity/candid';
 
 type Headers = Record<string, string>;
 
