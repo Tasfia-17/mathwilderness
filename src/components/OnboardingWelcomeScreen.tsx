@@ -9,50 +9,37 @@ interface OnboardingWelcomeScreenProps {
 }
 
 export default function OnboardingWelcomeScreen({ onNavigate, onBack, canGoBack }: OnboardingWelcomeScreenProps) {
-  const handleStartJourney = () => {
-    console.log('Start Journey clicked');
-    onNavigate('character-selection');
-  };
-
-  const handleLogin = () => {
-    console.log('Login clicked');
-    onNavigate('login');
-  };
-
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-sky-200 to-sky-100">
-      <div className="absolute inset-0 z-0">
+    <div className="w-full h-screen bg-sky-300 flex items-center justify-center">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
         <TreehouseSceneSVG />
       </div>
       
-      {canGoBack && (
-        <div className="absolute top-4 left-4 z-20">
-          <BackButton onClick={onBack} show={canGoBack} />
-        </div>
-      )}
-      
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-24">
-        <div className="bg-amber-900/90 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-4 shadow-2xl border-4 border-amber-800">
-          <h1 className="text-4xl font-bold text-amber-50 mb-3 text-center drop-shadow-lg">
-            Math Wilderness
-          </h1>
-          <p className="text-base text-amber-100 mb-6 text-center leading-relaxed">
-            Embark on an adventure through the forest of numbers!
-          </p>
-          <div className="flex flex-col gap-3">
-            <button
-              onClick={handleStartJourney}
-              className="bg-orange-600 hover:bg-orange-500 text-white text-lg font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg border-2 border-orange-800 cursor-pointer"
-            >
-              Start Your Journey
-            </button>
-            <button
-              onClick={handleLogin}
-              className="bg-amber-700 hover:bg-amber-600 text-white text-base font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg border-2 border-amber-900 cursor-pointer"
-            >
-              I Have a Badge
-            </button>
-          </div>
+      {/* Content - Always on top */}
+      <div className="relative z-50 bg-orange-800 rounded-3xl p-10 max-w-lg mx-4 shadow-2xl">
+        <h1 className="text-5xl font-bold text-white mb-4 text-center">
+          Math Wilderness
+        </h1>
+        <p className="text-xl text-orange-100 mb-8 text-center">
+          Embark on an adventure through the forest of numbers!
+        </p>
+        <div className="flex flex-col gap-4">
+          <button
+            onClick={() => {
+              console.log('Button clicked!');
+              onNavigate('character-selection');
+            }}
+            className="w-full bg-green-600 hover:bg-green-500 text-white text-2xl font-bold py-4 px-8 rounded-2xl shadow-xl border-4 border-green-800 cursor-pointer active:scale-95 transition"
+          >
+            START JOURNEY
+          </button>
+          <button
+            onClick={() => onNavigate('login')}
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-4 px-8 rounded-2xl shadow-xl border-4 border-blue-800 cursor-pointer active:scale-95 transition"
+          >
+            I HAVE A BADGE
+          </button>
         </div>
       </div>
     </div>

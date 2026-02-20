@@ -49,56 +49,66 @@ export default function CharacterSelectionScreen({ onNavigate, onMascotSelect, o
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-green-200 to-green-100">
-      <div className="absolute inset-0 z-0">
+    <div className="w-full h-screen bg-green-300 flex items-center justify-center overflow-y-auto">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
         <CharacterLandscapeSVG />
       </div>
       
-      <div className="absolute top-4 left-4 z-20">
-        <BackButton onClick={onBack} show={true} />
-      </div>
-      
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 overflow-y-auto">
-        <div className="bg-amber-900/95 backdrop-blur-sm rounded-2xl p-6 max-w-3xl w-full shadow-2xl border-4 border-amber-800">
-          <h2 className="text-3xl font-bold text-amber-50 mb-3 text-center drop-shadow-lg">
-            Choose Your Trail Guide
-          </h2>
-          <p className="text-base text-amber-100 mb-6 text-center">
-            Select a mascot to guide you through your mathematical journey
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {mascots.map((mascot) => (
-              <MascotCard
-                key={mascot.id}
-                mascot={mascot}
-                isSelected={selectedMascot === mascot.id}
-                onSelect={() => setSelectedMascot(mascot.id)}
-              />
-            ))}
-          </div>
-          
-          <div className="mb-6">
-            <label className="block text-lg font-semibold text-amber-50 mb-2 drop-shadow">
-              What's your camper name?
-            </label>
-            <input
-              type="text"
-              value={camperName}
-              onChange={(e) => setCamperName(e.target.value)}
-              placeholder="Enter your name..."
-              className="w-full bg-amber-50 text-amber-900 text-base px-4 py-3 rounded-xl border-2 border-amber-700 focus:outline-none focus:ring-2 focus:ring-orange-500 placeholder-amber-600 shadow-inner"
-            />
-          </div>
-          
-          <button
-            onClick={handleContinue}
-            disabled={!selectedMascot || !camperName.trim()}
-            className="w-full bg-orange-600 hover:bg-orange-500 disabled:bg-gray-600 disabled:cursor-not-allowed text-white text-lg font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:hover:scale-100 shadow-lg border-2 border-orange-800"
-          >
-            Begin Adventure
-          </button>
+      {/* Content */}
+      <div className="relative z-50 bg-purple-800 rounded-3xl p-8 max-w-4xl w-full mx-4 my-8">
+        <button
+          onClick={onBack}
+          className="mb-4 bg-red-600 text-white px-6 py-3 rounded-xl font-bold"
+        >
+          ← BACK
+        </button>
+        
+        <h2 className="text-4xl font-bold text-white mb-4 text-center">
+          Choose Your Trail Guide
+        </h2>
+        <p className="text-xl text-purple-100 mb-6 text-center">
+          Select a mascot to guide you
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {mascots.map((mascot) => (
+            <div
+              key={mascot.id}
+              onClick={() => setSelectedMascot(mascot.id)}
+              className={`p-6 rounded-2xl cursor-pointer border-4 transition ${
+                selectedMascot === mascot.id
+                  ? 'bg-yellow-400 border-yellow-600'
+                  : 'bg-white border-gray-300 hover:border-yellow-400'
+              }`}
+            >
+              <div className="flex justify-center mb-3">{mascot.icon}</div>
+              <h3 className="text-xl font-bold text-center mb-2">{mascot.name}</h3>
+              <p className="text-sm text-center text-gray-700">{mascot.personality}</p>
+            </div>
+          ))}
         </div>
+        
+        <div className="mb-6">
+          <label className="block text-2xl font-bold text-white mb-3">
+            What's your camper name?
+          </label>
+          <input
+            type="text"
+            value={camperName}
+            onChange={(e) => setCamperName(e.target.value)}
+            placeholder="Enter your name..."
+            className="w-full text-xl px-6 py-4 rounded-xl border-4 border-purple-600 focus:outline-none focus:border-yellow-400"
+          />
+        </div>
+        
+        <button
+          onClick={handleContinue}
+          disabled={!selectedMascot || !camperName.trim()}
+          className="w-full bg-green-600 hover:bg-green-500 disabled:bg-gray-500 text-white text-2xl font-bold py-4 rounded-2xl border-4 border-green-800 disabled:cursor-not-allowed cursor-pointer"
+        >
+          BEGIN ADVENTURE
+        </button>
       </div>
     </div>
   );
