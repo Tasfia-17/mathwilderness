@@ -1,10 +1,4 @@
 import { useState } from 'react';
-import CharacterLandscapeSVG from './CharacterLandscapeSVG';
-import MascotCard from './MascotCard';
-import BackButton from './BackButton';
-import SquirrelMascot from './mascots/SquirrelMascot';
-import MooseMascot from './mascots/MooseMascot';
-import OwlMascot from './mascots/OwlMascot';
 import type { ScreenName, MascotType } from '../types/navigation';
 
 interface CharacterSelectionScreenProps {
@@ -14,83 +8,96 @@ interface CharacterSelectionScreenProps {
 }
 
 const mascots = [
-  { 
-    id: 'squirrel' as MascotType, 
-    name: 'Swift Squirrel', 
-    personality: 'Energetic and quick', 
-    traits: ['Fast', 'Eager', 'Adaptive'],
-    icon: <SquirrelMascot size={60} pose="excited" />
-  },
-  { 
-    id: 'moose' as MascotType, 
-    name: 'Steady Moose', 
-    personality: 'Thoughtful and patient', 
-    traits: ['Methodical', 'Calm', 'Reliable'],
-    icon: <MooseMascot size={60} pose="steady" />
-  },
-  { 
-    id: 'owl' as MascotType, 
-    name: 'Wise Owl', 
-    personality: 'Analytical and wise', 
-    traits: ['Insightful', 'Focused', 'Strategic'],
-    icon: <OwlMascot size={60} pose="analytical" />
-  },
+  { id: 'squirrel' as MascotType, name: 'Swift Squirrel', emoji: '🐿️' },
+  { id: 'moose' as MascotType, name: 'Steady Moose', emoji: '🦌' },
+  { id: 'owl' as MascotType, name: 'Wise Owl', emoji: '🦉' },
 ];
 
 export default function CharacterSelectionScreen({ onNavigate, onMascotSelect, onBack }: CharacterSelectionScreenProps) {
   const [selectedMascot, setSelectedMascot] = useState<MascotType | null>(null);
-  const [camperName, setCamperName] = useState<string>('');
+  const [camperName, setCamperName] = useState('');
 
   const handleContinue = () => {
     if (selectedMascot && camperName.trim()) {
       onMascotSelect(selectedMascot, camperName);
-      onNavigate('diagnostic-assessment');
+      onNavigate('dashboard');
     }
   };
 
   return (
-    <div className="w-full h-screen bg-green-300 flex items-center justify-center overflow-y-auto">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <CharacterLandscapeSVG />
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-50 bg-purple-800 rounded-3xl p-8 max-w-4xl w-full mx-4 my-8">
-        <button
-          onClick={onBack}
-          className="mb-4 bg-red-600 text-white px-6 py-3 rounded-xl font-bold"
-        >
-          ← BACK
-        </button>
-        
-        <h2 className="text-4xl font-bold text-white mb-4 text-center">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(to bottom, #90EE90, #98D8C8)',
+      padding: '40px 20px'
+    }}>
+      <button
+        onClick={onBack}
+        style={{
+          backgroundColor: '#DC143C',
+          color: 'white',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          padding: '12px 24px',
+          borderRadius: '12px',
+          border: 'none',
+          cursor: 'pointer',
+          marginBottom: '20px'
+        }}
+      >
+        ← BACK
+      </button>
+
+      <div style={{
+        backgroundColor: 'rgba(128, 0, 128, 0.95)',
+        borderRadius: '24px',
+        padding: '40px',
+        maxWidth: '900px',
+        margin: '0 auto',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+      }}>
+        <h2 style={{
+          fontSize: '40px',
+          fontWeight: 'bold',
+          color: 'white',
+          marginBottom: '16px',
+          textAlign: 'center'
+        }}>
           Choose Your Trail Guide
         </h2>
-        <p className="text-xl text-purple-100 mb-6 text-center">
-          Select a mascot to guide you
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '20px',
+          marginBottom: '32px'
+        }}>
           {mascots.map((mascot) => (
             <div
               key={mascot.id}
               onClick={() => setSelectedMascot(mascot.id)}
-              className={`p-6 rounded-2xl cursor-pointer border-4 transition ${
-                selectedMascot === mascot.id
-                  ? 'bg-yellow-400 border-yellow-600'
-                  : 'bg-white border-gray-300 hover:border-yellow-400'
-              }`}
+              style={{
+                padding: '24px',
+                borderRadius: '16px',
+                backgroundColor: selectedMascot === mascot.id ? '#FFD700' : 'white',
+                border: `4px solid ${selectedMascot === mascot.id ? '#FFA500' : '#ccc'}`,
+                cursor: 'pointer',
+                textAlign: 'center'
+              }}
             >
-              <div className="flex justify-center mb-3">{mascot.icon}</div>
-              <h3 className="text-xl font-bold text-center mb-2">{mascot.name}</h3>
-              <p className="text-sm text-center text-gray-700">{mascot.personality}</p>
+              <div style={{ fontSize: '64px', marginBottom: '12px' }}>{mascot.emoji}</div>
+              <h3 style={{ fontSize: '24px', fontWeight: 'bold', color: '#333' }}>{mascot.name}</h3>
             </div>
           ))}
         </div>
-        
-        <div className="mb-6">
-          <label className="block text-2xl font-bold text-white mb-3">
+
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{
+            display: 'block',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: 'white',
+            marginBottom: '12px'
+          }}>
             What's your camper name?
           </label>
           <input
@@ -98,14 +105,31 @@ export default function CharacterSelectionScreen({ onNavigate, onMascotSelect, o
             value={camperName}
             onChange={(e) => setCamperName(e.target.value)}
             placeholder="Enter your name..."
-            className="w-full text-xl px-6 py-4 rounded-xl border-4 border-purple-600 focus:outline-none focus:border-yellow-400"
+            style={{
+              width: '100%',
+              fontSize: '20px',
+              padding: '16px',
+              borderRadius: '12px',
+              border: '4px solid #800080'
+            }}
           />
         </div>
-        
+
         <button
           onClick={handleContinue}
           disabled={!selectedMascot || !camperName.trim()}
-          className="w-full bg-green-600 hover:bg-green-500 disabled:bg-gray-500 text-white text-2xl font-bold py-4 rounded-2xl border-4 border-green-800 disabled:cursor-not-allowed cursor-pointer"
+          style={{
+            width: '100%',
+            backgroundColor: !selectedMascot || !camperName.trim() ? '#666' : '#228B22',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            padding: '20px',
+            borderRadius: '16px',
+            border: 'none',
+            cursor: !selectedMascot || !camperName.trim() ? 'not-allowed' : 'pointer',
+            opacity: !selectedMascot || !camperName.trim() ? 0.5 : 1
+          }}
         >
           BEGIN ADVENTURE
         </button>

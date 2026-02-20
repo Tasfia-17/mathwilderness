@@ -1,5 +1,3 @@
-import TreehouseSceneSVG from './TreehouseSceneSVG';
-import BackButton from './BackButton';
 import type { ScreenName } from '../types/navigation';
 
 interface OnboardingWelcomeScreenProps {
@@ -8,39 +6,77 @@ interface OnboardingWelcomeScreenProps {
   canGoBack: boolean;
 }
 
-export default function OnboardingWelcomeScreen({ onNavigate, onBack, canGoBack }: OnboardingWelcomeScreenProps) {
+export default function OnboardingWelcomeScreen({ onNavigate }: OnboardingWelcomeScreenProps) {
   return (
-    <div className="w-full h-screen bg-sky-300 flex items-center justify-center">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <TreehouseSceneSVG />
-      </div>
-      
-      {/* Content - Always on top */}
-      <div className="relative z-50 bg-orange-800 rounded-3xl p-10 max-w-lg mx-4 shadow-2xl">
-        <h1 className="text-5xl font-bold text-white mb-4 text-center">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(to bottom, #87CEEB, #98D8C8)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px'
+    }}>
+      <div style={{
+        backgroundColor: 'rgba(139, 69, 19, 0.95)',
+        borderRadius: '24px',
+        padding: '48px',
+        maxWidth: '500px',
+        width: '100%',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+        border: '4px solid #8B4513'
+      }}>
+        <h1 style={{
+          fontSize: '48px',
+          fontWeight: 'bold',
+          color: 'white',
+          marginBottom: '16px',
+          textAlign: 'center'
+        }}>
           Math Wilderness
         </h1>
-        <p className="text-xl text-orange-100 mb-8 text-center">
+        <p style={{
+          fontSize: '20px',
+          color: '#FFE4B5',
+          marginBottom: '32px',
+          textAlign: 'center'
+        }}>
           Embark on an adventure through the forest of numbers!
         </p>
-        <div className="flex flex-col gap-4">
-          <button
-            onClick={() => {
-              console.log('Button clicked!');
-              onNavigate('character-selection');
-            }}
-            className="w-full bg-green-600 hover:bg-green-500 text-white text-2xl font-bold py-4 px-8 rounded-2xl shadow-xl border-4 border-green-800 cursor-pointer active:scale-95 transition"
-          >
-            START JOURNEY
-          </button>
-          <button
-            onClick={() => onNavigate('login')}
-            className="w-full bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-4 px-8 rounded-2xl shadow-xl border-4 border-blue-800 cursor-pointer active:scale-95 transition"
-          >
-            I HAVE A BADGE
-          </button>
-        </div>
+        <button
+          onClick={() => onNavigate('character-selection')}
+          style={{
+            width: '100%',
+            backgroundColor: '#228B22',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            padding: '20px',
+            borderRadius: '16px',
+            border: '4px solid #006400',
+            cursor: 'pointer',
+            marginBottom: '16px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          }}
+        >
+          START JOURNEY
+        </button>
+        <button
+          onClick={() => onNavigate('login')}
+          style={{
+            width: '100%',
+            backgroundColor: '#4169E1',
+            color: 'white',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            padding: '16px',
+            borderRadius: '16px',
+            border: '4px solid #00008B',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          }}
+        >
+          I HAVE A BADGE
+        </button>
       </div>
     </div>
   );
