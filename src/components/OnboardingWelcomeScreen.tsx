@@ -1,3 +1,4 @@
+import TreehouseSceneSVG from './TreehouseSceneSVG';
 import type { ScreenName } from '../types/navigation';
 
 interface OnboardingWelcomeScreenProps {
@@ -8,75 +9,94 @@ interface OnboardingWelcomeScreenProps {
 
 export default function OnboardingWelcomeScreen({ onNavigate }: OnboardingWelcomeScreenProps) {
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(to bottom, #87CEEB, #98D8C8)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px'
-    }}>
+    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <TreehouseSceneSVG />
+      </div>
+      
       <div style={{
-        backgroundColor: 'rgba(139, 69, 19, 0.95)',
-        borderRadius: '24px',
-        padding: '48px',
-        maxWidth: '500px',
-        width: '100%',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-        border: '4px solid #8B4513'
+        position: 'absolute',
+        inset: 0,
+        zIndex: 10,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        paddingBottom: '100px',
+        pointerEvents: 'none'
       }}>
-        <h1 style={{
-          fontSize: '48px',
-          fontWeight: 'bold',
-          color: 'white',
-          marginBottom: '16px',
-          textAlign: 'center'
+        <div style={{
+          pointerEvents: 'auto',
+          backgroundColor: 'rgba(139, 115, 85, 0.95)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '24px',
+          padding: '40px',
+          maxWidth: '500px',
+          margin: '0 20px',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+          border: '4px solid #6B5744'
         }}>
-          Math Wilderness
-        </h1>
-        <p style={{
-          fontSize: '20px',
-          color: '#FFE4B5',
-          marginBottom: '32px',
-          textAlign: 'center'
-        }}>
-          Embark on an adventure through the forest of numbers!
-        </p>
-        <button
-          onClick={() => onNavigate('character-selection')}
-          style={{
-            width: '100%',
-            backgroundColor: '#228B22',
-            color: 'white',
-            fontSize: '24px',
+          <h1 style={{
+            fontSize: '48px',
             fontWeight: 'bold',
-            padding: '20px',
-            borderRadius: '16px',
-            border: '4px solid #006400',
-            cursor: 'pointer',
+            color: '#FFF8DC',
             marginBottom: '16px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-          }}
-        >
-          START JOURNEY
-        </button>
-        <button
-          onClick={() => onNavigate('login')}
-          style={{
-            width: '100%',
-            backgroundColor: '#4169E1',
-            color: 'white',
-            fontSize: '20px',
-            fontWeight: 'bold',
-            padding: '16px',
-            borderRadius: '16px',
-            border: '4px solid #00008B',
-            cursor: 'pointer',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-          }}
-        >
-          I HAVE A BADGE
-        </button>
+            textAlign: 'center',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            Math Wilderness
+          </h1>
+          <p style={{
+            fontSize: '18px',
+            color: '#F5DEB3',
+            marginBottom: '32px',
+            textAlign: 'center',
+            lineHeight: '1.6'
+          }}>
+            Embark on an adventure through the forest of numbers!
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <button
+              onClick={() => onNavigate('character-selection')}
+              style={{
+                width: '100%',
+                backgroundColor: '#D2691E',
+                color: 'white',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                padding: '16px 24px',
+                borderRadius: '12px',
+                border: '2px solid #8B4513',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                transition: 'all 0.2s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#CD853F'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#D2691E'}
+            >
+              Start Your Journey
+            </button>
+            <button
+              onClick={() => onNavigate('login')}
+              style={{
+                width: '100%',
+                backgroundColor: '#8B7355',
+                color: 'white',
+                fontSize: '16px',
+                fontWeight: '600',
+                padding: '14px 24px',
+                borderRadius: '12px',
+                border: '2px solid #6B5744',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                transition: 'all 0.2s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#A0826D'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#8B7355'}
+            >
+              I Have a Badge
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

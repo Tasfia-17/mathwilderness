@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import CharacterLandscapeSVG from './CharacterLandscapeSVG';
+import SquirrelMascot from './mascots/SquirrelMascot';
+import MooseMascot from './mascots/MooseMascot';
+import OwlMascot from './mascots/OwlMascot';
 import type { ScreenName, MascotType } from '../types/navigation';
 
 interface CharacterSelectionScreenProps {
@@ -8,9 +12,24 @@ interface CharacterSelectionScreenProps {
 }
 
 const mascots = [
-  { id: 'squirrel' as MascotType, name: 'Swift Squirrel', emoji: '🐿️' },
-  { id: 'moose' as MascotType, name: 'Steady Moose', emoji: '🦌' },
-  { id: 'owl' as MascotType, name: 'Wise Owl', emoji: '🦉' },
+  { 
+    id: 'squirrel' as MascotType, 
+    name: 'Swift Squirrel', 
+    personality: 'Energetic and quick',
+    icon: <SquirrelMascot size={60} pose="excited" />
+  },
+  { 
+    id: 'moose' as MascotType, 
+    name: 'Steady Moose', 
+    personality: 'Thoughtful and patient',
+    icon: <MooseMascot size={60} pose="steady" />
+  },
+  { 
+    id: 'owl' as MascotType, 
+    name: 'Wise Owl', 
+    personality: 'Analytical and wise',
+    icon: <OwlMascot size={60} pose="analytical" />
+  },
 ];
 
 export default function CharacterSelectionScreen({ onNavigate, onMascotSelect, onBack }: CharacterSelectionScreenProps) {
@@ -25,114 +44,152 @@ export default function CharacterSelectionScreen({ onNavigate, onMascotSelect, o
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(to bottom, #90EE90, #98D8C8)',
-      padding: '40px 20px'
-    }}>
-      <button
-        onClick={onBack}
-        style={{
-          backgroundColor: '#DC143C',
-          color: 'white',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          padding: '12px 24px',
-          borderRadius: '12px',
-          border: 'none',
-          cursor: 'pointer',
-          marginBottom: '20px'
-        }}
-      >
-        ← BACK
-      </button>
-
+    <div style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'auto' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <CharacterLandscapeSVG />
+      </div>
+      
       <div style={{
-        backgroundColor: 'rgba(128, 0, 128, 0.95)',
-        borderRadius: '24px',
-        padding: '40px',
-        maxWidth: '900px',
-        margin: '0 auto',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+        position: 'relative',
+        zIndex: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        padding: '40px 20px'
       }}>
-        <h2 style={{
-          fontSize: '40px',
-          fontWeight: 'bold',
-          color: 'white',
-          marginBottom: '16px',
-          textAlign: 'center'
-        }}>
-          Choose Your Trail Guide
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '20px',
-          marginBottom: '32px'
-        }}>
-          {mascots.map((mascot) => (
-            <div
-              key={mascot.id}
-              onClick={() => setSelectedMascot(mascot.id)}
-              style={{
-                padding: '24px',
-                borderRadius: '16px',
-                backgroundColor: selectedMascot === mascot.id ? '#FFD700' : 'white',
-                border: `4px solid ${selectedMascot === mascot.id ? '#FFA500' : '#ccc'}`,
-                cursor: 'pointer',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ fontSize: '64px', marginBottom: '12px' }}>{mascot.emoji}</div>
-              <h3 style={{ fontSize: '24px', fontWeight: 'bold', color: '#333' }}>{mascot.name}</h3>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ marginBottom: '24px' }}>
-          <label style={{
-            display: 'block',
-            fontSize: '24px',
-            fontWeight: 'bold',
-            color: 'white',
-            marginBottom: '12px'
-          }}>
-            What's your camper name?
-          </label>
-          <input
-            type="text"
-            value={camperName}
-            onChange={(e) => setCamperName(e.target.value)}
-            placeholder="Enter your name..."
-            style={{
-              width: '100%',
-              fontSize: '20px',
-              padding: '16px',
-              borderRadius: '12px',
-              border: '4px solid #800080'
-            }}
-          />
-        </div>
-
         <button
-          onClick={handleContinue}
-          disabled={!selectedMascot || !camperName.trim()}
+          onClick={onBack}
           style={{
-            width: '100%',
-            backgroundColor: !selectedMascot || !camperName.trim() ? '#666' : '#228B22',
-            color: 'white',
-            fontSize: '24px',
+            position: 'absolute',
+            top: '20px',
+            left: '20px',
+            backgroundColor: '#8B7355',
+            color: '#FFF8DC',
+            fontSize: '16px',
             fontWeight: 'bold',
-            padding: '20px',
-            borderRadius: '16px',
-            border: 'none',
-            cursor: !selectedMascot || !camperName.trim() ? 'not-allowed' : 'pointer',
-            opacity: !selectedMascot || !camperName.trim() ? 0.5 : 1
+            padding: '12px 20px',
+            borderRadius: '12px',
+            border: '2px solid #6B5744',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
           }}
         >
-          BEGIN ADVENTURE
+          ← Back
         </button>
+
+        <div style={{
+          backgroundColor: 'rgba(139, 115, 85, 0.95)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '24px',
+          padding: '40px',
+          maxWidth: '900px',
+          width: '100%',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+          border: '4px solid #6B5744'
+        }}>
+          <h2 style={{
+            fontSize: '40px',
+            fontWeight: 'bold',
+            color: '#FFF8DC',
+            marginBottom: '12px',
+            textAlign: 'center',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            Choose Your Trail Guide
+          </h2>
+          <p style={{
+            fontSize: '16px',
+            color: '#F5DEB3',
+            marginBottom: '32px',
+            textAlign: 'center'
+          }}>
+            Select a mascot to guide you through your mathematical journey
+          </p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '20px',
+            marginBottom: '32px'
+          }}>
+            {mascots.map((mascot) => (
+              <div
+                key={mascot.id}
+                onClick={() => setSelectedMascot(mascot.id)}
+                style={{
+                  padding: '24px',
+                  borderRadius: '16px',
+                  backgroundColor: selectedMascot === mascot.id ? '#F5DEB3' : 'rgba(245, 222, 179, 0.9)',
+                  border: `4px solid ${selectedMascot === mascot.id ? '#D2691E' : '#8B7355'}`,
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  transition: 'all 0.2s',
+                  boxShadow: selectedMascot === mascot.id ? '0 8px 20px rgba(210, 105, 30, 0.4)' : '0 4px 12px rgba(0,0,0,0.2)'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+                  {mascot.icon}
+                </div>
+                <h3 style={{ fontSize: '22px', fontWeight: 'bold', color: '#3E2723', marginBottom: '8px' }}>
+                  {mascot.name}
+                </h3>
+                <p style={{ fontSize: '14px', color: '#5D4037' }}>
+                  {mascot.personality}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginBottom: '24px' }}>
+            <label style={{
+              display: 'block',
+              fontSize: '20px',
+              fontWeight: 'bold',
+              color: '#FFF8DC',
+              marginBottom: '12px',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
+            }}>
+              What's your camper name?
+            </label>
+            <input
+              type="text"
+              value={camperName}
+              onChange={(e) => setCamperName(e.target.value)}
+              placeholder="Enter your name..."
+              style={{
+                width: '100%',
+                fontSize: '18px',
+                padding: '16px',
+                borderRadius: '12px',
+                border: '2px solid #8B4513',
+                backgroundColor: '#F5DEB3',
+                color: '#3E2723'
+              }}
+            />
+          </div>
+
+          <button
+            onClick={handleContinue}
+            disabled={!selectedMascot || !camperName.trim()}
+            style={{
+              width: '100%',
+              backgroundColor: !selectedMascot || !camperName.trim() ? '#6B5744' : '#D2691E',
+              color: 'white',
+              fontSize: '22px',
+              fontWeight: 'bold',
+              padding: '18px',
+              borderRadius: '12px',
+              border: '2px solid #8B4513',
+              cursor: !selectedMascot || !camperName.trim() ? 'not-allowed' : 'pointer',
+              opacity: !selectedMascot || !camperName.trim() ? 0.6 : 1,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+            }}
+          >
+            Begin Adventure
+          </button>
+        </div>
       </div>
     </div>
   );

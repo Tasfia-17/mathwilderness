@@ -4,7 +4,7 @@ import OnboardingWelcomeScreen from './components/OnboardingWelcomeScreen';
 import CharacterSelectionScreen from './components/CharacterSelectionScreen';
 import LoginScreen from './components/LoginScreen';
 import TutorialGuideScreen from './components/TutorialGuideScreen';
-import BaseCampDashboard from './components/BaseCampDashboardSimple';
+import BaseCampDashboard from './components/BaseCampDashboard';
 import LearningMapScreen from './components/LearningMapScreen';
 import ConceptIntroductionScreen from './components/ConceptIntroductionScreen';
 import PracticeSessionScreen from './components/PracticeSessionScreen';
