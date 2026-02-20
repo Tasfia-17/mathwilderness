@@ -11,10 +11,10 @@ export default function BackButton({ onClick, show = true }: BackButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="absolute top-4 left-4 z-50 bg-[#8B7355]/90 hover:bg-[#A0826D]/90 backdrop-blur-sm text-[#FFF8DC] p-2 rounded-lg transition-all duration-300 transform hover:scale-110 shadow-lg border border-[#6B5744]"
+      className="bg-amber-800/95 hover:bg-amber-700 backdrop-blur-sm text-amber-50 p-3 rounded-xl transition-all duration-200 transform hover:scale-110 active:scale-95 shadow-lg border-2 border-amber-900"
       aria-label="Go back"
     >
-      <ArrowLeft size={20} />
+      <ArrowLeft size={24} />
     </button>
   );
 }
