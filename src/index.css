@@ -1,3 +1,5 @@
+@import './styles/textures.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -148,5 +150,3 @@
     opacity: 1;
   }
 }
-
-@import './styles/textures.css';
