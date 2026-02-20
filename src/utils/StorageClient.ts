@@ -1,4 +1,4 @@
-import { HttpAgent, isV3ResponseBody } from '@dfinity/agent';
+import { HttpAgent } from '@dfinity/agent';
 import { IDL } from '@dfinity/candid';
 
 type Headers = Record<string, string>;
@@ -441,7 +441,7 @@ export class StorageClient {
             arg: args
         });
         const respone = result.response.body;
-        if (isV3ResponseBody(respone)) {
+        if (respone && typeof respone === 'object' && 'certificate' in respone) {
             console.log('Certificate:', respone.certificate);
             return respone.certificate;
         }
