@@ -20,6 +20,6 @@ export type ScreenName =
   | 'social'
   | 'settings';
 
-export type MascotType = 'squirrel' | 'moose' | 'owl' | 'fox' | 'bear' | 'rabbit';
+export type MascotType = 'squirrel' | 'moose' | 'owl' | 'turtle' | 'bunny';
 
 export type NavigationCallback = (screen: ScreenName) => void;
